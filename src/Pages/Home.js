@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import RecipeTemplate from '../Components/RecipeTemplate';
 import styled from 'styled-components';
 import { IoFastFoodOutline } from 'react-icons/io5';
 
-const Container = styled.div``;
+const Container = styled.div`
+  background-image: linear-gradient(rgb(255, 243, 222), rgb(255, 193, 99));
+`;
 
 const Title = styled.h1`
   text-align: center;
@@ -50,15 +52,36 @@ const CardContainer = styled.div`
 
 const Home = () => {
   const [search, setSearch] = useState('');
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState(() => {
+    let localResult = JSON.parse(localStorage.getItem('recipe'));
+    if (localResult) {
+      return localResult;
+    } else {
+      localResult = [];
+      return localResult;
+    }
+  });
 
   const URL = `https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`;
 
   const getRecipes = async () => {
     const result = await axios.get(URL);
     setRecipes(result.data.hits);
-    console.log(result.data.hits);
   };
+
+  useEffect(() => {
+    const init = async () => {
+      const setup = await axios.get(
+        `https://api.edamam.com/api/recipes/v2?type=public&q=lunch&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`
+      );
+      setRecipes(setup.data.hits);
+    };
+    init();
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('recipe', JSON.stringify(recipes));
+  }, [recipes]);
 
   const submit = (e) => {
     e.preventDefault();

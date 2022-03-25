@@ -8,6 +8,7 @@ const Container = styled.div`
   padding: 5px;
   border-radius: 5px;
   margin: 10px 0;
+  background-color: rgba(168, 193, 255, 0.6);
 `;
 
 const ImageContainer = styled.div`
@@ -57,8 +58,11 @@ const Button = styled.button`
 
 const RecipeTemplate = ({ recipe }) => {
   const cal = recipe['recipe']['calories'];
+
   const [pickRecipe, setPickRecipe] = useState('');
-  console.log(pickRecipe);
+
+  // console.log(pickRecipe);
+
   return (
     <Container>
       <ImageContainer>
