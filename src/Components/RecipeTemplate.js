@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
 import styled from 'styled-components';
 import { GiKnifeFork } from 'react-icons/gi';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   width: 250px;
@@ -58,10 +58,11 @@ const Button = styled.button`
 
 const RecipeTemplate = ({ recipe }) => {
   const cal = recipe['recipe']['calories'];
+  const navigate = useNavigate();
 
-  const [pickRecipe, setPickRecipe] = useState('');
-
-  // console.log(pickRecipe);
+  const toSinglePage = () => {
+    navigate(`/${recipe['recipe']['label']}`, { state: { recipe } });
+  };
 
   return (
     <Container>
@@ -71,7 +72,7 @@ const RecipeTemplate = ({ recipe }) => {
       <Title>{recipe['recipe']['label']} </Title>
       <InfoContainer>
         <CalInfo>Cal. {cal.toFixed(2)}</CalInfo>
-        <Button onClick={() => setPickRecipe(recipe['recipe']['label'])}>
+        <Button onClick={toSinglePage}>
           Get Recipe <GiKnifeFork />
         </Button>
       </InfoContainer>
