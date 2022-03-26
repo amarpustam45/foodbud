@@ -2,20 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import RecipeTemplate from '../Components/RecipeTemplate';
 import styled from 'styled-components';
-import { IoFastFoodOutline } from 'react-icons/io5';
+import Navbar from '../Components/Navbar';
 
 const Container = styled.div`
   background-image: linear-gradient(rgb(255, 243, 222), rgb(255, 193, 99));
-`;
-
-const Title = styled.h1`
-  text-align: center;
-  font-size: 3rem;
-  color: rgb(28, 28, 28);
-  margin: auto;
-  width: 98vw;
-  padding: 10px;
-  border-bottom: 1px solid rgb(28, 28, 28);
 `;
 
 const Form = styled.form``;
@@ -90,9 +80,7 @@ const Home = () => {
 
   return (
     <Container>
-      <Title>
-        FoodBud <IoFastFoodOutline />
-      </Title>
+      <Navbar />
       <Form onSubmit={submit}>
         <Wrapper>
           <Input
