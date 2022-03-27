@@ -79,7 +79,6 @@ const Home = () => {
   };
 
   useEffect(() => {
-    console.log(process.env.REACT_APP_API_ID);
     const init = async () => {
       const setup = await axios.get(
         `https://api.edamam.com/api/recipes/v2?type=public&q=lunch&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`
