@@ -26,6 +26,12 @@ const Input = styled.input`
   font-size: 1.3rem;
   font-weight: 600;
   text-align: center;
+  border-radius: 4px;
+  border: none;
+  outline: 1px solid rgba(0, 0, 0, 0.4);
+  &:focus {
+    outline: 1px solid rgb(255, 193, 99);
+  }
 `;
 
 const Button = styled.input`
@@ -33,8 +39,15 @@ const Button = styled.input`
   padding: 10px;
   font-size: 1.3rem;
   font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+
   &:hover {
     background-color: rgb(255, 193, 99);
+    transform: translateY(-3px);
+    filter: drop-shadow(0 3px 4px #000000);
   }
 `;
 
@@ -58,7 +71,7 @@ const Home = () => {
     }
   });
 
-  const URL = `https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`;
+  const URL = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/recipes/v2?type=public&q=${search}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_API_KEY}`;
 
   const getRecipes = async () => {
     const result = await axios.get(URL);
