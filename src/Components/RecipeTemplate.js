@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { GiKnifeFork } from 'react-icons/gi';
 import { useNavigate } from 'react-router-dom';
+import { mobile } from '../Responsive';
 
 const Container = styled.div`
   width: 250px;
@@ -9,6 +10,9 @@ const Container = styled.div`
   border-radius: 5px;
   margin: 10px 0;
   background-color: rgba(168, 193, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  ${mobile({ width: '175px', margin: '0' })}
 `;
 
 const ImageContainer = styled.div`
@@ -27,11 +31,11 @@ const Title = styled.h3`
 `;
 
 const InfoContainer = styled.div`
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 5px;
+  margin-top: auto;
 `;
 
 const CalInfo = styled.div`

@@ -3,6 +3,7 @@ import axios from 'axios';
 import RecipeTemplate from '../Components/RecipeTemplate';
 import styled from 'styled-components';
 import Navbar from '../Components/Navbar';
+import { mobile } from '../Responsive';
 
 const Container = styled.div`
   background-image: linear-gradient(rgb(255, 243, 222), rgb(255, 193, 99));
@@ -16,6 +17,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  ${mobile({ width: '100%' })}
 `;
 
 const Input = styled.input`
@@ -31,6 +33,9 @@ const Button = styled.input`
   padding: 10px;
   font-size: 1.3rem;
   font-weight: 600;
+  &:hover {
+    background-color: rgb(255, 193, 99);
+  }
 `;
 
 const CardContainer = styled.div`
@@ -38,6 +43,7 @@ const CardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  ${mobile({ justifyContent: 'center', gap: '20px' })}
 `;
 
 const Home = () => {

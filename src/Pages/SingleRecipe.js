@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Navbar from '../Components/Navbar';
+import { mobile } from '../Responsive';
 
 const Container = styled.div`
   width: 100vw;
@@ -14,11 +15,13 @@ const Wrapper = styled.div`
   width: 100%;
   height: max-content;
   padding: 20px 0;
+  ${mobile({ flexDirection: 'column' })}
 `;
 
 const MainContainer = styled.div`
   flex: 1;
   padding: 20px 40px;
+  ${mobile({ borderBottom: '1px solid rgb(28, 28, 28)' })}
 `;
 
 const ImageContainer = styled.div`
@@ -34,6 +37,7 @@ const Image = styled.img`
 const MainInfo = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 10px 0;
 `;
 
@@ -52,6 +56,7 @@ const Info = styled.h4``;
 const RecipeContianer = styled.div`
   flex: 2;
   padding: 20px 40px;
+  ${mobile({ borderBottom: '1px solid rgb(28, 28, 28)' })}
 `;
 
 const Ingredient = styled.div`
@@ -61,6 +66,7 @@ const Ingredient = styled.div`
 const HealthContianer = styled.div`
   flex: 2;
   padding: 20px 40px;
+  ${mobile({ borderBottom: '1px solid rgb(28, 28, 28)' })}
 `;
 
 const HealthInfo = styled.ul``;
