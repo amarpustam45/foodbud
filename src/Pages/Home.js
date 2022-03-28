@@ -89,7 +89,9 @@ const Home = () => {
       );
       setRecipes(setup.data.hits);
     };
-    init();
+    if (recipes.length === 0) {
+      init();
+    }
   }, []);
 
   useEffect(() => {
