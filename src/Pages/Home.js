@@ -65,10 +65,10 @@ const Home = () => {
   const [recipes, setRecipes] = useState(() => {
     let localResult = JSON.parse(localStorage.getItem('recipe'));
     if (localResult) {
-      initialRecipe = localResult.length;
       return localResult;
     } else {
       localResult = [];
+      initialRecipe = 1;
       return localResult;
     }
   });
@@ -91,7 +91,7 @@ const Home = () => {
       );
       setRecipes(setup.data.hits);
     };
-    if (initialRecipe.length === 0) {
+    if (initialRecipe.length === 1) {
       init();
     }
   }, [initialRecipe]);
