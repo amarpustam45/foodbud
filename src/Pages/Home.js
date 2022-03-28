@@ -91,7 +91,7 @@ const Home = () => {
       );
       setRecipes(setup.data.hits);
     };
-    if (initialRecipe.length === 1) {
+    if (initialRecipe === 1) {
       init();
     }
   }, [initialRecipe]);
