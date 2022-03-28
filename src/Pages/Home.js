@@ -60,10 +60,12 @@ const CardContainer = styled.div`
 `;
 
 const Home = () => {
+  let initialRecipe = 0;
   const [search, setSearch] = useState('');
   const [recipes, setRecipes] = useState(() => {
     let localResult = JSON.parse(localStorage.getItem('recipe'));
     if (localResult) {
+      initialRecipe = localResult.length;
       return localResult;
     } else {
       localResult = [];
@@ -89,10 +91,10 @@ const Home = () => {
       );
       setRecipes(setup.data.hits);
     };
-    if (recipes.length === 0) {
+    if (initialRecipe.length === 0) {
       init();
     }
-  }, []);
+  }, [initialRecipe]);
 
   useEffect(() => {
     localStorage.setItem('recipe', JSON.stringify(recipes));
